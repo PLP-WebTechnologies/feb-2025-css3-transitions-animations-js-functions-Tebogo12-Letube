@@ -21,5 +21,8 @@ document.getElementById("themeBtn").addEventListener("click", function () {
 
 document.getElementById("animatedBox").addEventListener("click", function() {
     this.style.backgroundColor = "rgba(144, 104, 228, 0.8)";
-    this.style.transition = "background-color 0.5s ease-in-out";
+    this.style.transform = "rotate(360deg)";
+    this.style.transition = "background-color 0.5s ease-in-out, transform 0.6s ease-in-out";
+
+    document.getElementById("statusMessage").textContent = "Box clicked! Magic in progress...";
 });
