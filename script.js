@@ -20,17 +20,10 @@ document.getElementById("themeBtn").addEventListener("click", function () {
 });
 
 document.getElementById("animatedBox").addEventListener("click", function() {
-    this.style.transition = "all 1s ease-in-out";
-    this.style.transform = "scale(1.5) rotate(180deg)";
-    this.style.backgroundColor = "rgba(228, 104, 144, 0.8)";
-    this.style.opacity = "0";
+    this.style.animation = "spinExpand 1s ease-in-out";
 
     setTimeout(() => {
-        this.style.transform = "scale(1) rotate(0deg)";
-        this.style.backgroundColor = "rgba(144, 104, 228, 0.8)";
-        this.style.opacity = "1";
         this.innerHTML = "✨ Magic! ✨";
+        document.getElementById("statusMessage").textContent = "Whoa! Did you just summon magic?";
     }, 1000);
-
-    document.getElementById("statusMessage").textContent = "Whoa! Did you just summon magic?";
 });
