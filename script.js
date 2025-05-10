@@ -20,9 +20,17 @@ document.getElementById("themeBtn").addEventListener("click", function () {
 });
 
 document.getElementById("animatedBox").addEventListener("click", function() {
-    this.style.backgroundColor = "rgba(144, 104, 228, 0.8)";
-    this.style.transform = "rotate(360deg) scale(1.2)";
-    this.style.transition = "background-color 0.5s ease-in-out, transform 0.6s ease-in-out";
+    this.style.transition = "all 1s ease-in-out";
+    this.style.transform = "scale(1.5) rotate(180deg)";
+    this.style.backgroundColor = "rgba(228, 104, 144, 0.8)";
+    this.style.opacity = "0";
 
-    document.getElementById("statusMessage").textContent = "Box clicked! Magic in progress...";
+    setTimeout(() => {
+        this.style.transform = "scale(1) rotate(0deg)";
+        this.style.backgroundColor = "rgba(144, 104, 228, 0.8)";
+        this.style.opacity = "1";
+        this.innerHTML = "✨ Magic! ✨";
+    }, 1000);
+
+    document.getElementById("statusMessage").textContent = "Whoa! Did you just summon magic?";
 });
