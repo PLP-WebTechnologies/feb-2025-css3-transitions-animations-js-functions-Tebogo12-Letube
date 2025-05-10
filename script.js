@@ -1,3 +1,4 @@
+// Store and retrieve the user,s preferences using localStorage
 function saveTheme(theme) {
     localStorage.setItem("userTheme", theme);
 }
@@ -6,24 +7,36 @@ function getTheme() {
     return localStorage.getItem("userTheme") || "dark";
 }
 
+// Apply saved theme on the page load
 document.addEventListener("DOMContentLoaded", function () {
     let savedTheme = getTheme();
-    document.body.style.backgroundColor = savedTheme === "dark" ? "#0d0d25" : "#cfcfe6";
-    document.body.style.color = savedTheme === "dark" ? "#cfcfe6" : "#333";
+    document.body.setAttribute("data-theme", savedTheme);
 });
 
+// Change the theme dynamically and store  the preference
 document.getElementById("themeBtn").addEventListener("click", function () {
-    let newTheme = document.body.style.backgroundColor === "rgb(13, 13, 37)" ? "light" : "dark";
-    document.body.style.backgroundColor = newTheme === "dark" ? "#0d0d25" : "#cfcfe6";
-    document.body.style.color = newTheme === "dark" ? "#cfcfe6" : "#333";
+    let currentTheme = document.body.getAttribute("data-theme");
+    let newTheme = currentTheme === "dark" ? "light" : "dark";
+
+    document.body.setAttribute("data-theme", newTheme);
     saveTheme(newTheme);
 });
 
+// Click animation by using stored data
 document.getElementById("animatedBox").addEventListener("click", function() {
     this.style.animation = "spinExpand 1s ease-in-out";
 
     setTimeout(() => {
         this.innerHTML = "✨ Magic! ✨";
         document.getElementById("statusMessage").textContent = "Whoa! Did you just summon magic?";
+        localStorage.setItem("lastAction", "Magic Activated!");
     }, 1000);
+});
+
+// Restore the last interactions
+document.addEventListener("DOMContentLoaded", function () {
+    let lastAction = localStorage.getItem("lastAction");
+    if (lastAction) {
+        document.getElementById("statusMessage").textContent = lastAction;
+    }
 });
