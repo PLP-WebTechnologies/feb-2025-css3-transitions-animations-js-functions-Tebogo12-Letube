@@ -1,13 +1,19 @@
 @keyframes glowEffect {
-    0% { box-shadow: 0 0 5px rgba(120, 90, 200, 0.3); }
-    50% { box-shadow: 0 0 20px rgba(120, 90, 200, 0.7); }
-    100% { box-shadow: 0 0 5px rgba(120, 90, 200, 0.3); }
+    0% { box-shadow: 0 0 10px rgba(120, 90, 200, 0.3); }
+    50% { box-shadow: 0 0 25px rgba(120, 90, 200, 0.7); }
+    100% { box-shadow: 0 0 10px rgba(120, 90, 200, 0.3); }
 }
 
 body {
     background-color: #0d0d25;
     color: #cfcfe6;
     font-family: 'Poppins', sans-serif;
+    text-align: center;
+    transition: background 0.5s ease-in-out, color 0.5s ease-in-out;
+}
+
+header {
+    padding: 20px;
 }
 
 button {
@@ -23,20 +29,25 @@ button {
 
 button:hover {
     transform: scale(1.1);
-    box-shadow: 0 0 15px rgba(93, 93, 142, 0.8);
     animation: glowEffect 1.5s infinite ease-in-out;
 }
 
 #animatedBox {
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
+    margin: 20px auto;
     background: linear-gradient(135deg, #3a1b68, #0f0f2e);
-    margin-top: 20px;
     border-radius: 8px;
-    transition: background-color 0.5s ease-in-out, transform 0.4s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #cfcfe6;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.4s ease-in-out, background-color 0.5s ease-in-out;
 }
 
 #animatedBox:hover {
     background-color: #46357e;
     transform: scale(1.1);
-} 
+}
